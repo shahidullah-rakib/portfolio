@@ -1,0 +1,2 @@
+light background: bg-gradient-to-br from-cyan-100 via-gray-100 to-red-100
+dark background: bg-gradient-to-br from-slate-800 via-slate-600 via-0% to-black

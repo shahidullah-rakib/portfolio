@@ -1,0 +1,25 @@
+/* Dark mode for Quill Editor */
+.dark .ql-editor {
+  background-color: #ffffff; /* Dark background */
+  color: #ffffff; /* Light text */
+}
+
+.dark .ql-toolbar {
+  color: #333;
+  background-color: #ffffff; /* Dark toolbar background */
+  border-color: #444; /* Dark toolbar border */
+}
+
+.dark .ql-picker {
+  color: #333; /* Light text for toolbar options */
+}
+
+.dark .ql-stroke {
+  stroke: #333; /* Icons color */
+}
+
+.dark .ql-fill {
+  fill: #333; /* Fill icons */
+}
+
+/* You can add more custom dark mode styling as per your design */
