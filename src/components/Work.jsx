@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion'; // For animations
 
 const workData = [
   {
@@ -65,9 +66,14 @@ const Work = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-700 py-12">
       <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-12">
+        <motion.h1
+          className="text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
           Projects & Work
-        </h1>
+        </motion.h1>
 
         {/* Projects Section */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">

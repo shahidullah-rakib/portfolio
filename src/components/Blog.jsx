@@ -15,10 +15,10 @@ const Blog = () => {
   return (
     <div className="text-center mt-10 px-4">
       <motion.h1
-        className="text-5xl font-extrabold mb-8 text-gray-800 dark:text-white"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
+        className="text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
       >
         Blog
       </motion.h1>

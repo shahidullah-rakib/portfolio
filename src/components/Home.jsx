@@ -12,7 +12,7 @@ const Home = () => {
     <div className="text-center mt-10 ">
       <div className="relative text-center px-4">
         <motion.h1
-          className="text-5xl font-bold text-white mb-6"
+          className="text-5xl font-bold text-gray-700 dark:text-gray-300 mb-6"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
@@ -20,7 +20,7 @@ const Home = () => {
           Welcome to My Portfolio
         </motion.h1>
         <motion.p
-          className="text-lg text-white mb-6"
+          className="text-lg text-gray-700 dark:text-gray-300 mb-6"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}

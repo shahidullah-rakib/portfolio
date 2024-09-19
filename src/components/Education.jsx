@@ -1,4 +1,4 @@
-import { div } from 'framer-motion/client';
+import { motion } from 'framer-motion'; // For animations
 import React from 'react';
 
 const educationData = [
@@ -27,11 +27,16 @@ const educationData = [
 
 const Education = () => {
   return (
-    <div className="overflow-hidden p-6">
+    <div className="overflow-hidden px-6">
       <div className="text-center mt-10">
-        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+        <motion.h1
+          className="text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
           Education
-        </h1>
+        </motion.h1>
         <div className="flex flex-col space-y-6">
           {educationData.map((edu, index) => (
             <div

@@ -1,7 +1,7 @@
 /* Dark mode for Quill Editor */
 .dark .ql-editor {
   background-color: #ffffff; /* Dark background */
-  color: #ffffff; /* Light text */
+  color: #333; /* Light text */
 }
 
 .dark .ql-toolbar {

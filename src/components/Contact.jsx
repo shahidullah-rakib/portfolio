@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion'; // For animations
 import emailjs from 'emailjs-com';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'; // Import the Quill snow theme
+import { FaPhone, FaEnvelope, FaWhatsapp } from 'react-icons/fa'; // Icons
 import './Contact.css'; // Custom CSS for dark mode
 
 const Contact = () => {
@@ -50,64 +52,105 @@ const Contact = () => {
 
   return (
     <div className={`text-center mt-10 ${darkMode ? 'dark' : ''}`}>
-      <h1 className="text-3xl font-bold mb-6">Contact</h1>
+      <motion.h1
+        className="text-4xl font-bold text-gray-900 dark:text-white mb-8"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        Contact
+      </motion.h1>
 
-      {isSent ? (
-        <p className="text-green-500 text-lg">Message sent successfully!</p>
-      ) : (
-        <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-          <div className="mb-4">
-            <label htmlFor="name" className="block text-left font-medium">
-              Name:
-            </label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              required
-              className="w-full border-2 rounded px-4 py-2 bg-transparent dark:bg-white"
-            />
+      <div className="flex flex-col md:flex-row justify-center gap-6">
+        {/* Contact Information */}
+        <motion.div
+          className="h-auto mb-12 p-4 max-w-md mx-auto bg-gray-100 inline-block dark:bg-gray-800 rounded-lg shadow-md"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">
+            Get in Touch
+          </h2>
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center gap-2 text-gray-800 dark:text-gray-200">
+              <FaPhone className="text-xl" />
+              <span>+8801721142653</span>
+            </div>
+            <div className="flex items-center gap-2 text-gray-800 dark:text-gray-200">
+              <FaEnvelope className="text-xl" />
+              <span>shsidullarakib@gmail.com</span>
+            </div>
+            <div className="flex items-center gap-2 text-gray-800 dark:text-gray-200">
+              <FaWhatsapp className="text-xl" />
+              <span>+8801721142653</span>
+            </div>
           </div>
+        </motion.div>
 
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-left font-medium">
-              Email:
-            </label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              required
-              className="w-full border-2 rounded px-4 py-2 bg-transparent dark:bg-white"
-            />
-          </div>
-
-          <div className="mb-6">
-            <label htmlFor="message" className="block text-left font-medium">
-              Message:
-            </label>
-            <ReactQuill
-              value={formData.message}
-              onChange={handleRichTextChange}
-              className="w-full border rounded"
-              required
-            />
-          </div>
-
-          {error && <p className="text-red-500">{error}</p>}
-
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+        {isSent ? (
+          <p className="text-green-500 text-lg">Message sent successfully!</p>
+        ) : (
+          <form
+            onSubmit={handleSubmit}
+            className="max-w-md mx-auto p-6 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md w-full md:w-1/2"
           >
-            Send Message
-          </button>
-        </form>
-      )}
+            <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">
+              Message
+            </h2>
+            <div className="mb-4">
+              <label htmlFor="name" className="block text-left font-medium">
+                Name:
+              </label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                required
+                className="w-full border-2 rounded px-4 py-2 bg-transparent text-black dark:bg-white"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="email" className="block text-left font-medium">
+                Email:
+              </label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+                className="w-full border-2 rounded px-4 py-2 bg-transparent text-black dark:bg-white"
+              />
+            </div>
+
+            <div className="mb-6">
+              <label htmlFor="message" className="block text-left font-medium">
+                Message:
+              </label>
+              <ReactQuill
+                value={formData.message}
+                onChange={handleRichTextChange}
+                className="w-full border rounded text-black"
+                required
+              />
+            </div>
+
+            {error && <p className="text-red-500">{error}</p>}
+
+            <button
+              type="submit"
+              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+            >
+              Send Message
+            </button>
+          </form>
+        )}
+      </div>
     </div>
   );
 };

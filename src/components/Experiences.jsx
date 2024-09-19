@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion'; // For animations
 
 const experiencesData = [
   {
@@ -30,9 +31,14 @@ const experiencesData = [
 const Experiences = () => {
   return (
     <div className="w-full min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-blue-50 dark:bg-gradient-to-tr dark:from-slate-900 dark:via-slate-700 dark:to-black p-6">
-      <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+      <motion.h1
+        className="text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
         Experiences
-      </h1>
+      </motion.h1>
       <div className="space-y-6">
         {experiencesData.map((experience, index) => (
           <div
