@@ -35,7 +35,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
+    <nav className="bg-gradient-to-br from-cyan-100 via-gray-100 to-red-100 dark:bg-gradient-to-tr dark:from-slate-800 dark:via-slate-600 dark:to-black fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link to="/" className="flex items-center space-x-3">
           {/* <img src={flowbiteLogo} className="h-8" alt="Flowbite Logo" /> */}
@@ -115,7 +115,7 @@ const Navbar = () => {
           } items-center justify-between w-full lg:flex lg:w-auto lg:order-1 z-50`}
           id="navbar-sticky"
         >
-          <ul className="flex flex-col p-4 lg:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 lg:space-x-8 lg:flex-row lg:mt-0 lg:border-0 lg:bg-white dark:bg-gray-800 lg:dark:bg-gray-900 dark:border-gray-700">
+          <ul className="flex flex-col p-4 lg:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 lg:space-x-8 lg:flex-row lg:mt-0 lg:border-0 lg:bg-transparent dark:bg-transparent lg:dark:bg-transparent dark:border-gray-700">
             <li>
               <Link
                 to="/"
