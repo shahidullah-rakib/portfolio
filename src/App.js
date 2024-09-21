@@ -73,6 +73,8 @@ const RouteSwitch = () => {
       <div className="transition-container">
         <Routes location={location}>
           <Route path="/" element={<Home />} />
+          <Route path="/portfolio" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/skills" element={<Skills />} />
