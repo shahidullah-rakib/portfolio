@@ -209,6 +209,19 @@ const Navbar = () => {
             </li>
             <li>
               <Link
+                to="/projects"
+                className={`block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 dark:hover:bg-gray-700 ${
+                  location.pathname === '/projects'
+                    ? 'text-blue-700 dark:text-blue-500'
+                    : 'text-gray-900 dark:text-white'
+                }`}
+                onClick={handleMenuItemClick}
+              >
+                Projects
+              </Link>
+            </li>
+            <li>
+              <Link
                 to="/blog"
                 className={`block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 dark:hover:bg-gray-700 ${
                   location.pathname === '/blog'

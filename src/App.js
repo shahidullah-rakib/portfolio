@@ -18,9 +18,17 @@ import Education from './components/Education';
 import Experiences from './components/Experiences';
 import Work from './components/Work';
 import Blog from './components/Blog';
+import Projects from './components/Projects';
 import Contact from './components/Contact';
-import ProfileSection from './components/ProfileSection'; // Import ProfileSection
+import ProfileSection from './components/ProfileSection';
+//blog
 import Books from './components/Blogs/Books/Books';
+//project
+import JavaScriptProject from './components/JavaScriptProject';
+import TextToSpeech from './components/Projects/JavaScript/TextToSpeech/TextToSpeech';
+import FileToText from './components/Projects/JavaScript/FileToText/FileToText';
+// demo
+import Carousel from './components/Carousel/Carousel';
 
 const routeOrder = [
   '/',
@@ -81,9 +89,22 @@ const RouteSwitch = () => {
           <Route path="/education" element={<Education />} />
           <Route path="/experiences" element={<Experiences />} />
           <Route path="/work" element={<Work />} />
+          <Route path="/projects" element={<Projects />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog/books" element={<Books />} />
+          <Route
+            path="/projects/java-script-project"
+            element={<JavaScriptProject />}
+          />
+          <Route
+            path="/projects/java-script-project/text-to-speech"
+            element={<TextToSpeech />}
+          />
+          <Route
+            path="/projects/java-script-project/file-to-text"
+            element={<FileToText />}
+          />
         </Routes>
       </div>
       {/* </CSSTransition> */}
