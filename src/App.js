@@ -1,35 +1,43 @@
-// src/App.tsx
-import React, { useState, useEffect } from 'react';
-// import './App.css';
+import React, { Suspense, useEffect, useRef } from 'react';
 import {
   BrowserRouter as Router,
-  Route,
   Routes,
+  Route,
   useLocation,
 } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import Navbar from './components/NavBar';
-import Footer from './components/Footer';
-import Home from './components/Home';
-import About from './components/About';
-import Services from './components/Services';
-import Skills from './components/Skills';
-import Education from './components/Education';
-import Experiences from './components/Experiences';
-import Work from './components/Work';
-import Blog from './components/Blog';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import ProfileSection from './components/ProfileSection';
-//blog
-import Books from './components/Blogs/Books/Books';
-//project
-import JavaScriptProject from './components/JavaScriptProject';
-import TextToSpeech from './components/Projects/JavaScript/TextToSpeech/TextToSpeech';
-import FileToText from './components/Projects/JavaScript/FileToText/FileToText';
-// demo
-import Carousel from './components/Carousel/Carousel';
 
+import Navbar from './components/NavBar';
+import ProfileSection from './components/ProfileSection';
+
+const Home = React.lazy(() => import('./components/Home'));
+const About = React.lazy(() => import('./components/About'));
+const Services = React.lazy(() => import('./components/Services'));
+const Skills = React.lazy(() => import('./components/Skills'));
+const Education = React.lazy(() => import('./components/Education'));
+const Experiences = React.lazy(() => import('./components/Experiences'));
+const Work = React.lazy(() => import('./components/Work'));
+const Projects = React.lazy(() => import('./components/Projects'));
+const Blog = React.lazy(() => import('./components/Blog'));
+const Contact = React.lazy(() => import('./components/Contact'));
+
+// Blog
+const Books = React.lazy(() => import('./components/Blogs/Books/Books'));
+
+// Projects
+const JavaScriptProject = React.lazy(
+  () => import('./components/JavaScriptProject')
+);
+const TextToSpeech = React.lazy(
+  () => import('./components/Projects/JavaScript/TextToSpeech/TextToSpeech')
+);
+const FileToText = React.lazy(
+  () => import('./components/Projects/JavaScript/FileToText/FileToText')
+);
+
+// --------------------
+// Route order (for direction-aware animation)
+// --------------------
 const routeOrder = [
   '/',
   '/about',
@@ -38,7 +46,9 @@ const routeOrder = [
   '/education',
   '/experiences',
   '/work',
+  '/projects',
   '/blog',
+  '/blog/books',
   '/contact',
 ];
 
@@ -46,70 +56,93 @@ const App = () => {
   return (
     <Router>
       <div className="flex flex-col min-h-screen overflow-hidden">
-        <div className="h-[72px] z-10">
+        {/* Navbar */}
+        <div className="h-[72px] z-10 relative">
           <Navbar />
         </div>
+
         <div className="w-full flex flex-grow">
-          {/* Fixed ProfileSection */}
-          <div className="h-full w-1/4 hidden lg:block">
+          {/* Sidebar */}
+          <aside className="h-full w-1/4 hidden lg:block">
             <ProfileSection />
-          </div>
-          <div className="flex-grow w-3/4  bg-[#f2f3f7] dark:bg-gradient-to-tr dark:from-slate-800 dark:via-slate-600 dark:via-0% dark:to-black overflow-hidden">
+          </aside>
+
+          {/* Main content */}
+          <main className="flex-grow w-3/4 bg-[#f2f3f7] dark:bg-gradient-to-tr dark:from-slate-800 dark:via-slate-600 dark:to-black overflow-hidden">
             <RouteSwitch />
-          </div>
+          </main>
         </div>
       </div>
     </Router>
   );
 };
 
+// --------------------
+// Animated route switch
+// --------------------
 const RouteSwitch = () => {
   const location = useLocation();
-  const [prevIndex, setPrevIndex] = useState(0); // Track the previous index
-
-  useEffect(() => {
-    const currentIndex = routeOrder.indexOf(location.pathname);
-    setPrevIndex(currentIndex);
-  }, [location]);
+  const prevPathRef = useRef(location.pathname);
 
   const currentIndex = routeOrder.indexOf(location.pathname);
-  const direction = currentIndex > prevIndex ? 'forward' : 'backward'; // Determine the transition direction
+  const prevIndex = routeOrder.indexOf(prevPathRef.current);
+
+  const direction = currentIndex >= prevIndex ? 'slide-forward' : 'slide-backward';
+
+  useEffect(() => {
+    prevPathRef.current = location.pathname;
+  }, [location.pathname]);
 
   return (
-    <div className="flex-grow">
-      {/* <CSSTransition key={location.key} timeout={500} classNames={direction}> */}
-      <div className="transition-container">
-        <Routes location={location}>
-          <Route path="/" element={<Home />} />
-          <Route path="/portfolio" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/skills" element={<Skills />} />
-          <Route path="/education" element={<Education />} />
-          <Route path="/experiences" element={<Experiences />} />
-          <Route path="/work" element={<Work />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/blog/books" element={<Books />} />
-          <Route
-            path="/projects/java-script-project"
-            element={<JavaScriptProject />}
-          />
-          <Route
-            path="/projects/java-script-project/text-to-speech"
-            element={<TextToSpeech />}
-          />
-          <Route
-            path="/projects/java-script-project/file-to-text"
-            element={<FileToText />}
-          />
-        </Routes>
-      </div>
-      {/* </CSSTransition> */}
-    </div>
+    <Suspense
+      fallback={
+        <div className="flex items-center justify-center h-full text-lg">
+          Loading...
+        </div>
+      }
+    >
+      <TransitionGroup component={null}>
+        <CSSTransition
+          key={location.pathname}
+          timeout={400}
+          classNames={direction}
+        >
+          <div className="h-full">
+            <Routes location={location}>
+              <Route path="/" element={<Home />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/portfolio" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/skills" element={<Skills />} />
+              <Route path="/education" element={<Education />} />
+              <Route path="/experiences" element={<Experiences />} />
+              <Route path="/work" element={<Work />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/books" element={<Books />} />
+              <Route path="/contact" element={<Contact />} />
+
+              <Route
+                path="/projects/java-script-project"
+                element={<JavaScriptProject />}
+              />
+              <Route
+                path="/projects/java-script-project/text-to-speech"
+                element={<TextToSpeech />}
+              />
+              <Route
+                path="/projects/java-script-project/file-to-text"
+                element={<FileToText />}
+              />
+            </Routes>
+          </div>
+        </CSSTransition>
+      </TransitionGroup>
+    </Suspense>
   );
 };
 
 export default App;
+
+

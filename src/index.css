@@ -44,3 +44,45 @@ code {
   opacity: 0;
   transition: transform 500ms ease-in-out, opacity 500ms ease-in-out;
 }
+
+.slide-forward-enter {
+  opacity: 0;
+  transform: translateX(40px);
+}
+
+.slide-forward-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 400ms ease;
+}
+
+.slide-forward-exit {
+  opacity: 1;
+}
+
+.slide-forward-exit-active {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: all 400ms ease;
+}
+
+.slide-backward-enter {
+  opacity: 0;
+  transform: translateX(-40px);
+}
+
+.slide-backward-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 400ms ease;
+}
+
+.slide-backward-exit {
+  opacity: 1;
+}
+
+.slide-backward-exit-active {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: all 400ms ease;
+}

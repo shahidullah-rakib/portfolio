@@ -1,98 +1,104 @@
 import React from 'react';
-import { motion } from 'framer-motion'; // For animations
+import { motion } from 'framer-motion';
+
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0 },
+};
 
 const Services = () => {
   return (
-    <div className="text-center mt-10">
-      {/* Section Header */}
+    <section className="max-w-6xl mx-auto px-6 py-16 text-center">
+      {/* Header */}
       <motion.h1
-        className="text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center"
-        initial={{ opacity: 0, y: -50 }}
+        className="text-5xl font-extrabold mb-6 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent"
+        initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.8 }}
       >
         My Services
       </motion.h1>
 
-      {/* Introduction Text */}
+      {/* Intro */}
       <motion.p
-        className="text-lg text-gray-700 dark:text-gray-300 mb-10 text-center"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.5 }}
+        className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-14"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
       >
-        As a dedicated frontend engineer and software developer, I offer a range
-        of services designed to meet your digital needs. Whether you're looking
-        to build a new website, develop a mobile app, or improve user
-        experiences, I can help you achieve your goals with precision and
-        creativity.
+        I help businesses and individuals build modern, scalable, and intelligent
+        digital products. From full-stack web applications to AI-powered
+        solutions, my services are focused on performance, usability, and
+        long-term growth.
       </motion.p>
 
-      {/* Services Cards */}
-      <div className="flex flex-wrap justify-center gap-8">
-        {/* Web Development */}
-        <motion.div
-          className="w-80 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-left"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-        >
-          <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-            Web Development
-          </h3>
-          <p className="text-gray-700 dark:text-gray-300">
-            I create responsive and high-performance websites using modern
-            technologies. From static sites to complex web applications, I
-            ensure an optimal user experience across all devices.
-          </p>
-        </motion.div>
+      {/* Services Grid */}
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+      >
+        {[
+          {
+            title: 'Full-Stack Web Development',
+            desc: 'End-to-end web applications using React, Next.js, Node.js, APIs, authentication, and databases.',
+          },
+          {
+            title: 'Frontend Engineering',
+            desc: 'High-performance, responsive, and accessible UIs with modern frameworks, animations, and best UX practices.',
+          },
+          {
+            title: 'Backend & API Development',
+            desc: 'Secure, scalable backend systems with REST APIs, authentication, and optimized data flow.',
+          },
+          {
+            title: 'AI-Powered Solutions',
+            desc: 'Machine learning, computer vision, NLP, and AI integrations to automate workflows and enhance products.',
+          },
+          {
+            title: 'UX/UI Design',
+            desc: 'User-centered interface design with a focus on usability, consistency, and visual clarity.',
+          },
+          {
+            title: 'Performance & Optimization',
+            desc: 'Speed, SEO, and scalability optimization to ensure fast load times and smooth user experiences.',
+          },
+        ].map((service, i) => (
+          <motion.div
+            key={i}
+            variants={item}
+            whileHover={{ y: -10, scale: 1.03 }}
+            className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg rounded-2xl shadow-xl p-8 text-left"
+          >
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+              {service.title}
+            </h3>
+            <p className="text-gray-600 dark:text-gray-300">
+              {service.desc}
+            </p>
+          </motion.div>
+        ))}
+      </motion.div>
 
-        {/* Mobile App Development */}
-        <motion.div
-          className="w-80 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-left"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.7 }}
-        >
-          <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-            Mobile App Development
-          </h3>
-          <p className="text-gray-700 dark:text-gray-300">
-            I develop intuitive and feature-rich mobile applications for both
-            iOS and Android platforms. My apps are designed to deliver seamless
-            performance and engaging user experiences.
-          </p>
-        </motion.div>
-
-        {/* UX/UI Design */}
-        <motion.div
-          className="w-80 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-left"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-        >
-          <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-            UX/UI Design
-          </h3>
-          <p className="text-gray-700 dark:text-gray-300">
-            I offer comprehensive UX/UI design services to create user-centered
-            designs that are both visually appealing and functionally efficient.
-            My designs aim to enhance usability and user satisfaction.
-          </p>
-        </motion.div>
-      </div>
-
-      {/* Contact Button */}
+      {/* CTA */}
       <motion.a
         href="#contact"
-        className="mt-12 inline-block px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-lg transition-transform transform hover:scale-105"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 1 }}
+        whileHover={{ scale: 1.1 }}
+        className="inline-block mt-16 px-8 py-4 rounded-xl font-semibold text-white bg-gradient-to-r from-blue-500 to-purple-600 shadow-lg"
       >
-        Get In Touch
+        Let’s Work Together 🚀
       </motion.a>
-    </div>
+    </section>
   );
 };
 
