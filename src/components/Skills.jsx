@@ -1,61 +1,145 @@
 import React from 'react';
-import { motion } from 'framer-motion'; // For animations
+import { motion } from 'framer-motion';
 
-const skills = [
-  'React.js',
-  'Next.js',
-  'Ionic',
-  'JavaScript',
-  'HTML5 & CSS3',
-  'Tailwind CSS',
+const skillGroups = [
+  {
+    title: 'Frontend',
+    skills: [
+      'React.js',
+      'Next.js',
+      'TypeScript',
+      'JavaScript (ES6+)',
+      'HTML5',
+      'CSS3',
+      'Tailwind CSS',
+      'Framer Motion',
+    ],
+  },
+  {
+    title: 'Backend',
+    skills: [
+      'Node.js',
+      'Express.js',
+      'REST APIs',
+      'Authentication (JWT, OAuth)',
+      'MongoDB',
+      'PostgreSQL',
+      'MySQL',
+    ],
+  },
+  {
+    title: 'Mobile',
+    skills: [
+      'Ionic',
+      'React Native',
+      'PWA Development',
+    ],
+  },
+  {
+    title: 'AI / ML',
+    skills: [
+      'Python',
+      'Machine Learning',
+      'Computer Vision',
+      'NLP',
+      'TensorFlow / PyTorch',
+      'OpenCV',
+    ],
+  },
+  {
+    title: 'Tools & DevOps',
+    skills: [
+      'Git & GitHub',
+      'Docker',
+      'CI/CD',
+      'Vercel',
+      'AWS (Basic)',
+      'Linux',
+    ],
+  },
 ];
+
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 25 },
+  show: { opacity: 1, y: 0 },
+};
 
 const Skills = () => {
   return (
-    <div className="text-center mt-10">
-      {/* Section Header */}
+    <section className="max-w-6xl mx-auto px-6 py-16 text-center">
+      {/* Header */}
       <motion.h1
-        className="text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center"
-        initial={{ opacity: 0, y: -50 }}
+        className="text-5xl font-extrabold mb-6 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent"
+        initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.8 }}
       >
         My Skills
       </motion.h1>
 
-      {/* Skills List */}
-      <div className="flex flex-wrap justify-center gap-6">
-        {skills.map((skill, index) => (
+      {/* Intro */}
+      <motion.p
+        className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-14"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
+      >
+        A diverse skill set covering frontend, backend, mobile development, and
+        AI engineering—focused on building scalable, high-performance, and
+        intelligent applications.
+      </motion.p>
+
+      {/* Skill Groups */}
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+      >
+        {skillGroups.map((group, index) => (
           <motion.div
             key={index}
-            className="w-56 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center transform transition-transform duration-500 hover:scale-105"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            variants={item}
+            whileHover={{ y: -8, scale: 1.02 }}
+            className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg rounded-2xl shadow-xl p-8 text-left"
           >
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-              {skill}
+              {group.title}
             </h3>
-            <p className="text-gray-700 dark:text-gray-300">
-              {/* Optionally add a description or detail about each skill */}
-              {skill} is one of my core skills, which I use to build robust and
-              scalable applications.
-            </p>
+
+            <ul className="space-y-2">
+              {group.skills.map((skill, i) => (
+                <li
+                  key={i}
+                  className="text-gray-600 dark:text-gray-300 flex items-center gap-2"
+                >
+                  <span className="w-2 h-2 bg-blue-500 rounded-full" />
+                  {skill}
+                </li>
+              ))}
+            </ul>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
 
-      {/* Contact Button */}
+      {/* CTA */}
       <motion.a
         href="#contact"
-        className="mt-12 inline-block px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-lg transition-transform transform hover:scale-105"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: skills.length * 0.1 }}
+        whileHover={{ scale: 1.1 }}
+        className="inline-block mt-16 px-8 py-4 rounded-xl font-semibold text-white bg-gradient-to-r from-blue-500 to-purple-600 shadow-lg"
       >
-        Hire Me
+        Let’s Build Something Powerful 🚀
       </motion.a>
-    </div>
+    </section>
   );
 };
 
