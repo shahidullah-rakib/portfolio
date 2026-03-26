@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Footer from './Footer';
+  import profileImage from '../assets/images/cv.png';
 
 const ProfileSection = () => {
   const jobTitles = ['Software Engineer', 'Frontend Developer'];
@@ -32,8 +33,14 @@ const ProfileSection = () => {
     }
   }, [letterIndex, isTitleComplete, currentTitleIndex, jobTitles]);
 
+
   return (
     <div className="w-full h-full p-8 flex flex-col justify-between items-center text-center">
+      <img
+          src={profileImage}
+          alt="Profile"
+          className="rounded-full w-40 h-40 border-4 border-blue-500 dark:border-yellow-400 shadow-lg transition-transform duration-500 ease-in-out transform hover:scale-110 hover:rotate-6"
+        />
       <div className="flex-1 flex flex-col items-center pt-8">
         <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-2 pb-2 border-b-2 border-blue-500/20 w-fit animate-slideInUp">
           MD SHAHIDULLAH RAKIB

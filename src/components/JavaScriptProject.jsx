@@ -4,6 +4,7 @@ import {
   FaMicrophone,
   FaUtensils,
   FaTextWidth,
+  FaGamepad,
 } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
@@ -36,6 +37,12 @@ const JavaScriptProject = () => {
       icon: <FaUtensils className="text-green-500" />,
       description: 'A web app to plan your meals.',
       route: '/house-meal',
+    },
+    {
+      title: 'Memory Match Game',
+      icon: <FaGamepad className="text-red-500" />,
+      description: 'A fun and interactive emoji matching game with animations.',
+      route: '/projects/java-script-project/memory-game',
     },
     // Add more projects as needed
   ];

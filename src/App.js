@@ -33,6 +33,9 @@ const TextToSpeech = React.lazy(
 const FileToText = React.lazy(
   () => import('./components/Projects/JavaScript/FileToText/FileToText')
 );
+const MemoryGame = React.lazy(
+  () => import('./components/Projects/JavaScript/MemoryGame/MemoryGame')
+);
 
 const routeOrder = [
   '/',
@@ -154,6 +157,10 @@ const RouteSwitch = () => {
               <Route
                 path="/projects/java-script-project/file-to-text"
                 element={<FileToText />}
+              />
+              <Route
+                path="/projects/java-script-project/memory-game"
+                element={<MemoryGame />}
               />
         </Routes>
       </div>
