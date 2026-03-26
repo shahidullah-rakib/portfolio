@@ -46,42 +46,82 @@ code {
 }
 
 .slide-forward-enter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   opacity: 0;
   transform: translateX(40px);
 }
 
 .slide-forward-enter-active {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   opacity: 1;
   transform: translateX(0);
   transition: all 400ms ease;
 }
 
 .slide-forward-exit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   opacity: 1;
 }
 
 .slide-forward-exit-active {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   opacity: 0;
   transform: translateX(-40px);
   transition: all 400ms ease;
 }
 
 .slide-backward-enter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   opacity: 0;
   transform: translateX(-40px);
 }
 
 .slide-backward-enter-active {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   opacity: 1;
   transform: translateX(0);
   transition: all 400ms ease;
 }
 
 .slide-backward-exit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   opacity: 1;
 }
 
 .slide-backward-exit-active {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   opacity: 0;
   transform: translateX(40px);
   transition: all 400ms ease;

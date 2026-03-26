@@ -3,6 +3,30 @@ import { motion } from 'framer-motion'; // For animations
 
 const workData = [
   {
+    title: 'HRIS (Human Resource Intelligence System)',
+    tech: 'Next.js, NestJS, MySQL',
+    description:
+      'Engineered an ERP and SaaS-based HR management system for Akij Venture to manage employee data and internal processes. Implemented scalable architecture using Next.js and NestJS with MySQL to support multi-organization SaaS deployment.',
+  },
+  {
+    title: 'RTM (Root to Market)',
+    tech: 'Next.js, NestJS, MySQL',
+    description:
+      'Built a secondary sales management system where sales offices place orders via mobile app and operations are monitored via an admin panel. Developed a full-stack solution using Next.js frontend and NestJS backend with MySQL for efficient order tracking and management.',
+  },
+  {
+    title: 'MERO MART (E-Commerce)',
+    tech: 'React, Next.js, Tailwind CSS',
+    description:
+      'Frontend development focused on fast, responsive, scalable UI with optimized product listings, cart, checkout, and seamless API integration.',
+  },
+  {
+    title: 'MABI (Market Audit and Business Intelligence)',
+    tech: 'Next.js, React, TypeScript, Tailwind CSS',
+    description:
+      'Built an admin panel for Akij Venture to monitor product performance, auditor activity, and market insights in real time.',
+  },
+  {
     title: 'Study Tasky (Mobile App)',
     tech: 'Ionic, React, HTML, Tailwind, Firebase',
     description:

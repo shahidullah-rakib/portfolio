@@ -35,8 +35,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gradient-to-br from-cyan-100 via-gray-100 to-red-100 dark:bg-gradient-to-tr dark:from-slate-800 dark:via-slate-600 dark:to-black fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <nav className="w-full h-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800 transition-colors duration-300 flex items-center">
+      <div className="w-full px-6 flex flex-wrap items-center justify-between mx-auto">
         <Link to="/" className="flex items-center space-x-3">
           {/* <img src={flowbiteLogo} className="h-8" alt="Flowbite Logo" /> */}
           <button
